@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    let catalogoProdutos = [];
+
+function adicionarProduto(nome, preco, descricao) {
+    let produto = {
+        nome: nome,
+        preco: preco,
+        descricao: descricao
+    };
+    catalogoProdutos.push(produto);
+    console.log(Produto "${nome}" adicionado com sucesso.);
+}
+
+function buscarProduto(nome) {
+    let produtoEncontrado = catalogoProdutos.find(produto => produto.nome === nome);
+    if (produtoEncontrado) {
+        console.log(Produto encontrado: ${produtoEncontrado.nome} - Preço: R$${produtoEncontrado.preco} - Descrição: ${produtoEncontrado.descricao});
+    } else {
+        console.log(Produto "${nome}" não encontrado.);
+    }
+}
+
+function atualizarProduto(nome, novoPreco, novaDescricao) {
+    let produto = catalogoProdutos.find(produto => produto.nome === nome);
+    if (produto) {
+        produto.preco = novoPreco;
+        produto.descricao = novaDescricao;
+        console.log(Informações do produto "${nome}" atualizadas com sucesso.);
+    } else {
+        console.log(Produto "${nome}" não encontrado para atualização.);
+    }
+}
+
+function removerProduto(nome) {
+    catalogoProdutos = catalogoProdutos.filter(produto => produto.nome !== nome);
+    console.log(Produto "${nome}" removido do catálogo.);
+}
+
+function visualizarCatalogo() {
+    console.log("Catálogo de Produtos:");
+    catalogoProdutos.forEach(produto => {
+        console.log(- ${produto.nome} | Preço: R$${produto.preco} | Descrição: ${produto.descricao});
+    });
+}
+
+adicionarProduto("vestido", 69.99, "vestido branco tamanho M");
+adicionarProduto("short Jeans", 49.99, "Calça jeans azul tamanho 38");
+
+buscarProduto("vestido");
+
+atualizarProduto("Calça Jeans", 39.99, "Calça jeans azul tamanho 40");
+
+removerProduto("vestido");
+
+visualizarCatalogo();
+</body>
+</html>
